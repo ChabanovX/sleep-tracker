@@ -1,9 +1,12 @@
 import "package:flutter/cupertino.dart";
+import 'package:flutter/services.dart';
+
 import "package:sleep_tracker_app/ui/home_page.dart";
 import "package:sleep_tracker_app/ui/settings_page.dart";
 
-
 int main() {
+  // SystemChrome.setPreferredOrientations(
+  //     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(MainApp());
   return 0;
 }

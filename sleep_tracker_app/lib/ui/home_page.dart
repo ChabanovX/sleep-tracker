@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:sleep_tracker_app/data/styles.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,12 +11,18 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return const CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Text("Home"),
-      ),
+    return CupertinoPageScaffold(
+      navigationBar: const CupertinoNavigationBar(),
       child: Center(
-        child: Text("Home Page"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text("17:00", style: Styles.title),
+            Text("Lol", style: Styles.subtitle),
+            Text("Test", style: Styles.graySubtitle),
+          ],
+        ),
       ),
     );
   }

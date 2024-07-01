@@ -72,10 +72,29 @@ class _CountdownState extends State<Countdown> {
     final minutes = twoDigits(duration.inMinutes.remainder(60));
     final seconds = twoDigits(duration.inSeconds.remainder(60));
 
-    return Text(
-      '$hours:$minutes:$seconds',
-      style: Styles.titleBold,
-      textAlign: TextAlign.center,
+    return Column(
+      children: [
+        Text(
+          '$hours:$minutes:$seconds',
+          style: Styles.titleBold,
+          textAlign: TextAlign.center,
+        ),
+        const Text("Time left before bed 😴", style: Styles.subtitle),
+      ],
+    );
+  }
+}
+
+class NoneScheduleWidget extends StatelessWidget {
+  const NoneScheduleWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        Text("No schedule today", style: Styles.titleBold),
+        Text("Please add schedule", style: Styles.subtitle),
+      ],
     );
   }
 }

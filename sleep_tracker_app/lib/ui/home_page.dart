@@ -30,17 +30,24 @@ class _HomePageState extends State<HomePage> {
             children: [
               Column(
                 children: [
-                  Countdown(
-                    sleepTime: context.watch<FullSchedule>().todaySleepDuration,
+                  Container(
+                    child: context
+                            .watch<FullSchedule>()
+                            .isDayOff(DateTime.now().weekday - 1)
+                        ? const NoneScheduleWidget()
+                        : Countdown(
+                            sleepTime: context
+                                .watch<FullSchedule>()
+                                .todaySleepDuration,
+                          ),
                   ), // Add from current timer
-                  Text("Time left before bed 😴", style: Styles.subtitle),
-                  SizedBox(height: 16.0),
-                  Divider(
+                  const SizedBox(height: 16.0),
+                  const Divider(
                     thickness: 1.0,
                     indent: 32.0,
                     endIndent: 32.0,
                   ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
                 ],
               ),
               Container(
@@ -59,14 +66,15 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       alignment: Alignment.centerLeft,
                       padding: const EdgeInsets.only(left: 32.0),
-                      child: Text("Weekly Statistics", style: Styles.titleBold),
+                      child:
+                          const Text("Schedules", style: Styles.graySubtitle),
                     ),
                     const SizedBox(height: 16.0),
                     AspectRatio(
                       aspectRatio: 2.0,
                       child: Container(
                         margin: const EdgeInsets.all(24.0),
-                        child: BarChartSample3(),
+                        child: const BarChartSample3(), // TODO Add schedules there
                       ),
                     ),
                     // const SizedBox(height: 32.0),

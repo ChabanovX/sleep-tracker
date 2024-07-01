@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
+
 enum Day { monday, tuesday, wednesday, thursday, friday, saturday, sunday }
 
-class FullSchedule {
+class FullSchedule extends ChangeNotifier {
   List<DaySchedule> days = [];
   late Duration timeBeforeNotification;
 
@@ -15,30 +17,38 @@ class FullSchedule {
 
   void changeTimeBeforeNotification(Duration time) {
     timeBeforeNotification = time;
+    notifyListeners();
   }
 
-  void setSchedule(Day day, DateTime start, DateTime end) {
+  void setSchedule(Day day, Duration start, Duration end) {
     days[day.index].setSchedule(start, end);
+    notifyListeners();
   }
 
   void deleteSchedule(Day day) {
-    // TODO: implement
+    days[day.index].isDayOff = true;
+    notifyListeners();
+  }
+
+  Duration get todaySleepDuration {
+    if (isDayOff(Day.values[DateTime.now().weekday - 1])) {
+      return Duration.zero;
+    }
+    return days[DateTime.now().weekday - 1].start;
   }
 }
 
 class DaySchedule {
   Day day;
   bool isDayOff = true;
-  late DateTime start;
-  late DateTime end;
+  late Duration start;
+  late Duration end;
 
   DaySchedule({required this.day});
 
-  void setSchedule(DateTime start, DateTime end) {
+  void setSchedule(Duration start, Duration end) {
     this.start = start;
     this.end = end;
-    if (start.isBefore(end)) {
-      isDayOff = false;
-    }
+    isDayOff = false;
   }
 }

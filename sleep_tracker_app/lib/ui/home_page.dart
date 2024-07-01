@@ -3,7 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sleep_tracker_app/data/styles.dart';
 
-import "package:sleep_tracker_app/test.dart";
+import "package:sleep_tracker_app/ui/graph.dart";
+import "package:sleep_tracker_app/models/timer.dart";
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,8 +28,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               const Column(
                 children: [
-                  Text("12:42:11",
-                      style: Styles.titleBold), // Should be logic with timer
+                  Countdown(), // Add from current timer
                   Text("Time left before bed 😴", style: Styles.subtitle),
                   SizedBox(height: 16.0),
                   Divider(

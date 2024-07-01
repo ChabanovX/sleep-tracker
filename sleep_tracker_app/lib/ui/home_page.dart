@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Text("12:42:11",
                       style: Styles.titleBold), // Should be logic with timer
-                  Text("Time left before bed", style: Styles.subtitle),
+                  Text("Time left before bed 😴", style: Styles.subtitle),
                   SizedBox(height: 16.0),
                   Divider(
                     thickness: 1.0,
@@ -40,17 +40,40 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      CupertinoColors.white,
+                      CupertinoColors.extraLightBackgroundGray
+                    ],
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      padding: const EdgeInsets.only(left: 32.0),
+                      child: Text("Weekly Statistics", style: Styles.titleBold),
+                    ),
+                    const SizedBox(height: 16.0),
+                    AspectRatio(
+                      aspectRatio: 2.0,
+                      child: Container(
+                        margin: const EdgeInsets.all(24.0),
+                        child: BarChartSample3(),
+                      ),
+                    ),
+                    // const SizedBox(height: 32.0),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 32.0),
+              Container(
                 alignment: Alignment.centerLeft,
                 padding: const EdgeInsets.only(left: 32.0),
-                child: Text("Weekly Statistics", style: Styles.subtitle),
-              ),
-              const SizedBox(height: 16.0),
-              AspectRatio(
-                aspectRatio: 2.0,
-                child: Container(
-                  margin: const EdgeInsets.all(24.0),
-                  child: BarChartSample3(),
-                ),
+                // child: Text("LOL LOASDA", style: Styles.titleBold),
               ),
             ],
           ),

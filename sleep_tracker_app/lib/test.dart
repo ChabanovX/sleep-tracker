@@ -24,7 +24,7 @@ class _BarChart extends StatelessWidget {
   BarTouchData get barTouchData => BarTouchData(
         enabled: false,
         touchTooltipData: BarTouchTooltipData(
-          getTooltipColor: (group) => Colors.white,
+          getTooltipColor: (group) => CupertinoColors.extraLightBackgroundGray,
           tooltipPadding: EdgeInsets.zero,
           tooltipMargin: 8,
           getTooltipItem: (
@@ -108,7 +108,7 @@ class _BarChart extends StatelessWidget {
         show: false,
       );
 
-  LinearGradient get _barsGradient => const LinearGradient(
+  LinearGradient get _barsGradient => LinearGradient(
         colors: [
           Colors.blueAccent,
           Colors.deepPurple,

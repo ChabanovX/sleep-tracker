@@ -7,7 +7,7 @@ void main() {
   testWidgets('Home Page displays correct information',
       (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MainApp());
+    await tester.pumpWidget(MainApp());
 
     expect(true, true);
     // expect(find.text("Time left before bed 😴"), findsOneWidget);

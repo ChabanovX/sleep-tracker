@@ -94,7 +94,8 @@ class _BarChart extends StatelessWidget {
           ),
         ),
         leftTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
+          sideTitles: SideTitles(showTitles: true,
+          reservedSize: 40),
         ),
         topTitles: const AxisTitles(
           sideTitles: SideTitles(showTitles: false),

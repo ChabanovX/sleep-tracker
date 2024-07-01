@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:sleep_tracker_app/main.dart';
 
-void main() {
-  testWidgets('Home Page displays correct information',
-      (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MainApp());
+// import 'package:sleep_tracker_app/models/timer.dart';
 
-    expect(true, true);
-    // expect(find.text("Time left before bed 😴"), findsOneWidget);
+void main() {
+  testWidgets('MainApp test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(ProviderScope(child: MainApp()));
+
+    // expect(true, true);
+    expect(find.text("Time left before bed 😴"), findsOneWidget);
   });
 }

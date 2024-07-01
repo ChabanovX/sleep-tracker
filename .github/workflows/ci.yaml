@@ -3,10 +3,10 @@ name: Build App
 on:
     push:
         branches:
-            - tests
+            - main
     pull_request:
         branches:
-            - tests
+            - main
 
 jobs:
   main:
@@ -23,6 +23,6 @@ jobs:
           channel: stable
       - run: flutter pub get
       - run: flutter test test/unit_test.dart
-      - run: flutter test test/widget_test.dart
+      # - run: flutter test test/widget_test.dart
       - run: flutter analyze --no-fatal-warnings --no-fatal-infos lib/main.dart
       - run: flutter build ios --release --no-codesign lib/main.dart

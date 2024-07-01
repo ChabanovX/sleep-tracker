@@ -1,16 +1,23 @@
-import "package:flutter/cupertino.dart";
-import 'package:flutter/services.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:provider/provider.dart' as provider;
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:provider/provider.dart';
+import 'package:sleep_tracker_app/models/schedule.dart';
+import 'package:sleep_tracker_app/models/time_settings.dart';
+import 'package:sleep_tracker_app/ui/home_page.dart';
+import 'package:sleep_tracker_app/ui/settings_page.dart';
 
-import "package:sleep_tracker_app/ui/home_page.dart";
-import "package:sleep_tracker_app/ui/settings_page.dart";
-import "package:sleep_tracker_app/models/schedule.dart";
-
-int main() {
+void main() async {
   // SystemChrome.setPreferredOrientations(
   //     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  runApp(const MainApp());
-  return 0;
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(TimeSettingsAdapter());
+  await Hive.openBox<TimeSettings>('timeSettings');
+  
+  runApp(const ProviderScope(child: MainApp()));
 }
 
 class MainApp extends StatelessWidget {
@@ -20,7 +27,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => FullSchedule()),
+        provider.ChangeNotifierProvider(create: (_) => FullSchedule()),
       ],
       child: CupertinoApp(
         debugShowCheckedModeBanner: false,

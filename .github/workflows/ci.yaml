@@ -1,0 +1,28 @@
+name: Build App
+
+on:
+    push:
+        branches:
+            - tests
+    pull_request:
+        branches:
+            - tests
+
+jobs:
+  main:
+    runs-on: macos-latest
+    defaults:
+        run:
+            working-directory: ./sleep_tracker_app
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - run: flutter pub get
+      - run: flutter test test/unit_test.dart
+      - run: flutter test test/widget_test.dart
+      - run: flutter analyze --no-fatal-warnings --no-fatal-infos lib/main.dart
+      - run: flutter build ios --release --no-codesign lib/main.dart

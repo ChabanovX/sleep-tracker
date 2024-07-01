@@ -17,7 +17,11 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(TimeSettingsAdapter());
   await Hive.openBox<TimeSettings>('timeSettings');
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> tests
   runApp(const ProviderScope(child: MainApp()));
 }
 

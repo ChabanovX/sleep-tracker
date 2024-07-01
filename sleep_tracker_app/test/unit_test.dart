@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sleep_tracker_app/models/schedule.dart';
 
@@ -12,10 +11,10 @@ void main() {
     test("setSchedule should work properly", () {
       final schedule = FullSchedule();
       schedule.setSchedule(
-          Day.tuesday, Duration(hours: 23), Duration(hours: 7));
+          Day.tuesday, const Duration(hours: 23), const Duration(hours: 7));
       expect(schedule.days[1].isDayOff, false);
-      expect(schedule.days[1].start, Duration(hours: 23));
-      expect(schedule.days[1].end, Duration(hours: 7));
+      expect(schedule.days[1].start, const Duration(hours: 23));
+      expect(schedule.days[1].end, const Duration(hours: 7));
     });
 
     test('deleteSchedule should work properly', () {

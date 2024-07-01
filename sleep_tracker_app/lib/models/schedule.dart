@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-enum Day { monday, tuesday, wednesday, thursday, friday, saturday, sunday }
+enum Day { Mon, Tue, Wed, Thu, Fri, Sat, Sun }
 
 class FullSchedule extends ChangeNotifier {
   List<DaySchedule> days = [];
@@ -12,7 +12,6 @@ class FullSchedule extends ChangeNotifier {
     }
     // Test
     days[0].setSchedule(Duration(hours: 23, minutes: 0, seconds: 0), Duration(hours: 6, minutes: 0, seconds: 0));
-
   }
   bool isDayOff(int day) {
     return days[day].isDayOff;

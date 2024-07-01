@@ -1,8 +1,10 @@
 // import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sleep_tracker_app/data/styles.dart';
+import 'package:provider/provider.dart';
 
+import 'package:sleep_tracker_app/data/styles.dart';
+import 'package:sleep_tracker_app/models/schedule.dart';
 import "package:sleep_tracker_app/ui/graph.dart";
 import "package:sleep_tracker_app/models/timer.dart";
 
@@ -26,9 +28,11 @@ class _HomePageState extends State<HomePage> {
           color: CupertinoColors.white,
           child: Column(
             children: [
-              const Column(
+              Column(
                 children: [
-                  Countdown(), // Add from current timer
+                  Countdown(
+                    sleepTime: context.watch<FullSchedule>().todaySleepDuration,
+                  ), // Add from current timer
                   Text("Time left before bed 😴", style: Styles.subtitle),
                   SizedBox(height: 16.0),
                   Divider(

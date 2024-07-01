@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:sleep_tracker_app/data/styles.dart';
+
 import 'dart:async';
 
 class Countdown extends StatefulWidget {
-  const Countdown({super.key});
+
+  final Duration sleepTime; 
+  const Countdown({super.key, required this.sleepTime});
 
   @override
   State<Countdown> createState() => _CountdownState();
@@ -11,7 +14,7 @@ class Countdown extends StatefulWidget {
 
 class _CountdownState extends State<Countdown> {
   DateTime now = DateTime.now();
-  Duration sleepTime = Duration(hours: 15, minutes: 0, seconds: 0); // We get this
+
   Duration duration = Duration();
   Timer? timer;
 
@@ -27,9 +30,9 @@ class _CountdownState extends State<Countdown> {
     setState(
       () {
         int nowInSeconds = now.hour * 3600 + now.minute * 60 + now.second;
-        int timeLeft = sleepTime.inSeconds - nowInSeconds;
+        int timeLeft = widget.sleepTime.inSeconds - nowInSeconds;
         if (timeLeft < 0) {
-          timeLeft = 86400 - nowInSeconds + sleepTime.inSeconds;
+          timeLeft = 86400 - nowInSeconds + widget.sleepTime.inSeconds;
         }
         duration = Duration(seconds: timeLeft);
       },

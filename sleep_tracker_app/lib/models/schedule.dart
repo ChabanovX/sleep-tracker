@@ -31,10 +31,12 @@ class FullSchedule extends ChangeNotifier {
   }
 
   Duration get todaySleepDuration {
-    if (isDayOff(Day.values[DateTime.now().weekday - 1])) {
-      return Duration.zero;
-    }
-    return days[DateTime.now().weekday - 1].start;
+    // Returns the start of a sleep phase.
+    // if (isDayOff(Day.values[DateTime.now().weekday - 1])) {
+    //   return Duration.zero;
+    // }
+    // return days[DateTime.now().weekday - 1].start;
+    return Duration(hours: 15, minutes: 0, seconds: 0);
   }
 }
 

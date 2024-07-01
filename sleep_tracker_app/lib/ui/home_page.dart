@@ -18,97 +18,98 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    // Color color = Theme.of(context).;
+
     return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-        backgroundColor: CupertinoColors.white,
-        border: null,
-      ),
       child: SafeArea(
-        child: Container(
-          color: CupertinoColors.white,
-          child: Column(
-            children: [
-              Column(
-                children: [
-                  Container(
-                    child: context
-                            .watch<FullSchedule>()
-                            .isDayOff(DateTime.now().weekday - 1)
-                        ? const NoneScheduleWidget()
-                        : Countdown(
-                            sleepTime: context
-                                .watch<FullSchedule>()
-                                .todaySleepDuration,
-                          ),
-                  ), // Add from current timer
-                  const SizedBox(height: 16.0),
-                  const Divider(
-                    thickness: 1.0,
-                    indent: 32.0,
-                    endIndent: 32.0,
+        child: Padding(
+          padding: EdgeInsets.only(top: 20),
+          child: Container(
+            // color: CupertinoColors.white,
+            child: Column(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      child: context
+                              .watch<FullSchedule>()
+                              .isDayOff(DateTime.now().weekday - 1)
+                          ? const NoneScheduleWidget()
+                          : Countdown(
+                              sleepTime: context
+                                  .watch<FullSchedule>()
+                                  .todaySleepDuration,
+                            ),
+                    ), // Add from current timer
+                    const SizedBox(height: 16.0),
+                    const Divider(
+                      thickness: 1.0,
+                      indent: 32.0,
+                      endIndent: 32.0,
+                    ),
+                    const SizedBox(height: 16.0),
+                  ],
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        CupertinoColors.white,
+                        CupertinoColors.extraLightBackgroundGray
+                      ],
+                    ),
                   ),
-                  const SizedBox(height: 16.0),
-                ],
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      CupertinoColors.white,
-                      CupertinoColors.extraLightBackgroundGray
+                  child: Column(
+                    children: [
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        padding: const EdgeInsets.only(left: 32.0),
+                        child: const Text("Sleeping time",
+                            style: Styles.graySubtitle),
+                      ),
+                      const SizedBox(height: 16.0),
+                      AspectRatio(
+                        aspectRatio: 2.0,
+                        child: Container(
+                          margin: const EdgeInsets.all(24.0),
+                          child:
+                              const BarChartSample3(), // TODO Add schedules there
+                        ),
+                      ),
+                      // const SizedBox(height: 32.0),
                     ],
                   ),
                 ),
-                child: Column(
-                  children: [
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      padding: const EdgeInsets.only(left: 32.0),
-                      child: const Text("Sleeping time",
-                          style: Styles.graySubtitle),
-                    ),
-                    const SizedBox(height: 16.0),
-                    AspectRatio(
-                      aspectRatio: 2.0,
-                      child: Container(
-                        margin: const EdgeInsets.all(24.0),
-                        child:
-                            const BarChartSample3(), // TODO Add schedules there
+                // const SizedBox(height: 32.0),
+                Container(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 16,
                       ),
-                    ),
-                    // const SizedBox(height: 32.0),
-                  ],
-                ),
-              ),
-              // const SizedBox(height: 32.0),
-              Container(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 16,
-                    ),
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      padding: const EdgeInsets.only(left: 32.0),
-                      child: const Text("Why sleep is important",
-                          style: Styles.graySubtitle),
-                    ),
-                    // Container(
-                    //   child: ListView(
-                    //     shrinkWrap: true,
-                    //     children: const [
-                    //       Text("asd"),
-                    //       Text("asd"),
-                    //       Text("asd"),
-                    //     ],
-                    //   ),
-                    // )
-                  ],
-                ),
-              )
-            ],
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        padding: const EdgeInsets.only(left: 32.0),
+                        child: const Text("Why sleep is important",
+                            style: Styles.graySubtitle),
+                      ),
+                      // Container(
+                      //   child: ListView(
+                      //     shrinkWrap: true,
+                      //     children: const [
+                      //       Text("asd"),
+                      //       Text("asd"),
+                      //       Text("asd"),
+                      //     ],
+                      //   ),
+                      // )
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

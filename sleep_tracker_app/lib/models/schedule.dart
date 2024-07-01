@@ -11,8 +11,7 @@ class FullSchedule extends ChangeNotifier {
       days.add(DaySchedule(day: Day.values[i]));
     }
     // Test
-    days[0].setSchedule(Duration(hours: 20, minutes: 0, seconds: 0), Duration(hours: 6, minutes: 0, seconds: 0));
-
+    days[0].setSchedule(Duration(hours: 23, minutes: 0, seconds: 0), Duration(hours: 6, minutes: 0, seconds: 0));
   }
   bool isDayOff(int day) {
     return days[day].isDayOff;

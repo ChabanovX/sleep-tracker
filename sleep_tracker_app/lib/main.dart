@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
 import 'package:provider/provider.dart' as provider;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,7 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(TimeSettingsAdapter());
   await Hive.openBox<TimeSettings>('timeSettings');
-  
+
   runApp(const ProviderScope(child: MainApp()));
 }
 

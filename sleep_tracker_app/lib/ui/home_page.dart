@@ -66,27 +66,48 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       alignment: Alignment.centerLeft,
                       padding: const EdgeInsets.only(left: 32.0),
-                      child:
-                          const Text("Schedules", style: Styles.graySubtitle),
+                      child: const Text("Sleeping time",
+                          style: Styles.graySubtitle),
                     ),
                     const SizedBox(height: 16.0),
                     AspectRatio(
                       aspectRatio: 2.0,
                       child: Container(
                         margin: const EdgeInsets.all(24.0),
-                        child: const BarChartSample3(), // TODO Add schedules there
+                        child:
+                            const BarChartSample3(), // TODO Add schedules there
                       ),
                     ),
                     // const SizedBox(height: 32.0),
                   ],
                 ),
               ),
-              const SizedBox(height: 32.0),
+              // const SizedBox(height: 32.0),
               Container(
-                alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.only(left: 32.0),
-                // child: Text("LOL LOASDA", style: Styles.titleBold),
-              ),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      padding: const EdgeInsets.only(left: 32.0),
+                      child: const Text("Why sleep is important",
+                          style: Styles.graySubtitle),
+                    ),
+                    // Container(
+                    //   child: ListView(
+                    //     shrinkWrap: true,
+                    //     children: const [
+                    //       Text("asd"),
+                    //       Text("asd"),
+                    //       Text("asd"),
+                    //     ],
+                    //   ),
+                    // )
+                  ],
+                ),
+              )
             ],
           ),
         ),

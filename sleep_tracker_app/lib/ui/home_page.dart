@@ -6,8 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:sleep_tracker_app/data/styles.dart';
 import 'package:sleep_tracker_app/models/schedule.dart';
 import "package:sleep_tracker_app/ui/graph.dart";
-import "package:sleep_tracker_app/ui/graph2.dart";
-import "package:sleep_tracker_app/ui/mygraph.dart";
 import "package:sleep_tracker_app/models/timer.dart";
 
 class HomePage extends StatefulWidget {
@@ -68,15 +66,16 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       alignment: Alignment.centerLeft,
                       padding: const EdgeInsets.only(left: 32.0),
-                      child:
-                          const Text("Your Schedules", style: Styles.graySubtitle),
+                      child: const Text("Sleeping time",
+                          style: Styles.graySubtitle),
                     ),
                     const SizedBox(height: 16.0),
                     AspectRatio(
                       aspectRatio: 2.0,
                       child: Container(
                         margin: const EdgeInsets.all(24.0),
-                        child: const BarChartSample3(), // TODO Add schedules there
+                        child:
+                            const BarChartSample3(), // TODO Add schedules there
                       ),
                     ),
                     // const SizedBox(height: 32.0),
@@ -84,13 +83,31 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               // const SizedBox(height: 32.0),
-              Expanded(
-                child: Container(
-                  alignment: Alignment.center,
-                  child: Text("Something", style: Styles.subtitle),
-                  color: CupertinoColors.white,
+              Container(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      padding: const EdgeInsets.only(left: 32.0),
+                      child: const Text("Why sleep is important",
+                          style: Styles.graySubtitle),
+                    ),
+                    // Container(
+                    //   child: ListView(
+                    //     shrinkWrap: true,
+                    //     children: const [
+                    //       Text("asd"),
+                    //       Text("asd"),
+                    //       Text("asd"),
+                    //     ],
+                    //   ),
+                    // )
+                  ],
                 ),
-              ),
+              )
             ],
           ),
         ),

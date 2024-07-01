@@ -128,21 +128,33 @@ class SettingsPage extends ConsumerWidget {
               ),
             ),
           ),
-          // const Text("Active Days:"),
-          // Wrap(
-          //   spacing: 8.0,
-          //   children: List<Widget>.generate(7, (int index) {
-          //     return FilterChip(
-          //       label: Text(Day.values[index].toString().split('.').last),
-          //       selected: timeSettings.activeDays[index],
-          //       onSelected: (bool selected) {
-          //         final newActiveDays = List<bool>.from(timeSettings.activeDays);
-          //         newActiveDays[index] = selected;
-          //         timeSettingsNotifier.updateActiveDays(newActiveDays);
-          //       },
-          //     );
-          //   }),
-          // ),
+          const SizedBox(height: 50,),
+          const Text("Active Days:", style: Styles.titleBold,),
+          Wrap(
+            spacing: 8.0,
+            children: List<Widget>.generate(7, (int index) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CupertinoButton(
+                    color: timeSettings.activeDays[index] ? CupertinoColors.activeBlue : Colors.grey[200],
+                    onPressed: () {
+                      final newActiveDays = List<bool>.from(timeSettings.activeDays);
+                      newActiveDays[index] = !newActiveDays[index];
+                      timeSettingsNotifier.updateActiveDays(newActiveDays);
+                    },
+                    child: Text(
+                      Day.values[index].name,
+                      style: TextStyle(
+                        color: timeSettings.activeDays[index] ? CupertinoColors.white : CupertinoColors.systemBlue,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            }),
+          ),
         ],
       ),
     );

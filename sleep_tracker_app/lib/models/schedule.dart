@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-enum Day { monday, tuesday, wednesday, thursday, friday, saturday, sunday }
+enum Day { Mon, Tue, Wed, Thu, Fri, Sat, Sun }
 
 class FullSchedule extends ChangeNotifier {
   List<DaySchedule> days = [];

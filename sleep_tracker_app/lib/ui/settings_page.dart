@@ -10,12 +10,22 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
-    return const CupertinoPageScaffold(
+    return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text("Settings"),
       ),
       child: Center(
-        child: Text("Settings page"),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Settings page"),
+            CupertinoButton(
+              child: Text("add Schedule"),
+              onPressed: () {
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

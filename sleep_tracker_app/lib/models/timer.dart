@@ -4,8 +4,7 @@ import 'package:sleep_tracker_app/data/styles.dart';
 import 'dart:async';
 
 class Countdown extends StatefulWidget {
-
-  final Duration sleepTime; 
+  final Duration sleepTime;
   const Countdown({super.key, required this.sleepTime});
 
   @override

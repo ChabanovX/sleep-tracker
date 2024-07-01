@@ -95,16 +95,46 @@ class _HomePageState extends State<HomePage> {
                       child: const Text("Why sleep is important",
                           style: Styles.graySubtitle),
                     ),
-                    // Container(
-                    //   child: ListView(
-                    //     shrinkWrap: true,
-                    //     children: const [
-                    //       Text("asd"),
-                    //       Text("asd"),
-                    //       Text("asd"),
-                    //     ],
-                    //   ),
-                    // )
+                    Container(
+                      height: 300,
+                      width: 600,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          Container(
+                            // Widget
+                            width: 300,
+                            padding: EdgeInsets.fromLTRB(10, 16, 10, 16),
+                            child: Container(
+                              color: CupertinoColors.systemGrey,
+                              child: Center(
+                                child: Text("test"),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 300,
+                            padding: EdgeInsets.fromLTRB(10, 16, 10, 16),
+                            child: Container(
+                              color: CupertinoColors.systemGrey,
+                              child: Center(
+                                child: Text("test"),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 300,
+                            padding: EdgeInsets.fromLTRB(10, 16, 10, 16),
+                            child: Container(
+                              color: CupertinoColors.systemGrey,
+                              child: Center(
+                                child: Text("test"),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               )

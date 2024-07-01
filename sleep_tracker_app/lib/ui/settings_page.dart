@@ -6,24 +6,29 @@ import 'package:sleep_tracker_app/models/schedule.dart';
 import 'package:sleep_tracker_app/models/time_settings.dart';
 import 'package:sleep_tracker_app/ui/providers/time_settings_provider.dart';
 
+import 'providers/theme_notifier.dart';
+
 class SettingsPage extends ConsumerWidget {
   const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final timeSettings = ref.watch(timeSettingsProvider) ?? TimeSettings(
-      bedTime: DateTime.now(),
-      wakeUpTime: DateTime.now(),
-      activeDays: List.filled(7, false),
-    );
+    final timeSettings = ref.watch(timeSettingsProvider) ??
+        TimeSettings(
+          bedTime: DateTime.now(),
+          wakeUpTime: DateTime.now(),
+          activeDays: List.filled(7, false),
+        );
     final timeSettingsNotifier = ref.read(timeSettingsProvider.notifier);
+    final themeNotifier = ref.read(themeNotifierProvider.notifier);
+    final isDarkMode =
+        ref.watch(themeNotifierProvider).brightness == Brightness.dark;
 
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(
         middle: Text("Settings"),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: ListView(
         children: [
           const Text('Set Alarm', style: Styles.titleBold,),
           Card(

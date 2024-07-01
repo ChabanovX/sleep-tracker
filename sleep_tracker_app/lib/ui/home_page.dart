@@ -83,65 +83,129 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 // const SizedBox(height: 32.0),
-                Container(
+                Container(color: CupertinoColors.extraLightBackgroundGray,
                   child: Column(
                     children: [
                       SizedBox(
                         height: 16,
                       ),
                       Container(
-                child: Column(
-                  children: [
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      padding: const EdgeInsets.only(left: 32.0),
-                      child: const Text("Why sleep is important",
-                          style: Styles.graySubtitle),
-                    ),
-                    Container(
-                      height: 300,
-                      width: 600,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: <Widget>[
-                          Container(
-                            // Widget
-                            width: 300,
-                            padding: EdgeInsets.fromLTRB(10, 16, 10, 16),
-                            child: Container(
-                              color: CupertinoColors.systemGrey,
+                        child: Column(
+                          children: [
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              // padding: const EdgeInsets.fromLTRB(left: 32.0),
                               child: Center(
-                                child: Text("test"),
+                                child: const Text("Why sleep is important",
+                                    style: Styles.subtitleBold),
                               ),
                             ),
-                          ),
-                          Container(
-                            width: 300,
-                            padding: EdgeInsets.fromLTRB(10, 16, 10, 16),
-                            child: Container(
-                              color: CupertinoColors.systemGrey,
-                              child: Center(
-                                child: Text("test"),
+                            Container(
+                              height: 300,
+                              width: 600,
+                              child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: <Widget>[
+                                  Container(
+                                    width: 300,
+                                    padding:
+                                        EdgeInsets.fromLTRB(32, 16, 32, 16),
+                                    child: Container(
+                                      color: CupertinoColors.extraLightBackgroundGray,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Center(
+                                            child: Center(
+                                              child: Text(
+                                                "If you want to break a world record, try the bed-jumping competition! Getting enough sleep can boost your athletic performance, making you leap higher, run faster, and even excel at extreme pillow fighting.",
+                                                style: Styles.subtitle,
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(height: 32),
+                                          Icon(
+                                            CupertinoIcons.check_mark,
+                                            color: CupertinoColors.activeBlue,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 300,
+                                    padding:
+                                        EdgeInsets.fromLTRB(32, 16, 32, 16),
+                                    child: Container(
+                                      color: CupertinoColors.extraLightBackgroundGray,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Center(
+                                            child: Center(
+                                              child: Text(
+                                                "Want to avoid becoming a grumpy cat? A good night's sleep can turn your `I hate Mondays` mood into `I love every day,` preventing you from turning into a human-shaped raincloud.",
+                                                style: Styles.subtitle,
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(height: 32),
+                                          Icon(
+                                            CupertinoIcons.check_mark,
+                                            color: CupertinoColors.activeBlue,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    
+                                    width: 300,
+                                    padding:
+                                        EdgeInsets.fromLTRB(32, 16, 32, 16),
+                                    child: Container(
+                                      color: CupertinoColors.extraLightBackgroundGray,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Center(
+                                            child: Center(
+                                              child: Text(
+                                                "Ever tried to solve a puzzle while sleep-deprived? It’s like searching for a needle in a haystack! Adequate sleep sharpens your mind, so you can conquer crosswords and remember where you left your keys (or at least the general vicinity).",
+                                                style: Styles.subtitle,
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(height: 32),
+                                          Icon(
+                                            CupertinoIcons.check_mark,
+                                            color: CupertinoColors.activeBlue,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                          ),
-                          Container(
-                            width: 300,
-                            padding: EdgeInsets.fromLTRB(10, 16, 10, 16),
-                            child: Container(
-                              color: CupertinoColors.systemGrey,
-                              child: Center(
-                                child: Text("test"),
-                              ),
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
+                      
                       ),
-                    ),
-                  ],),)
                     ],
                   ),
-                )
+                ),
+                Expanded(
+                        child: Container(
+                          color: CupertinoColors.extraLightBackgroundGray,
+                        ),
+                      ),
               ],
             ),
           ),

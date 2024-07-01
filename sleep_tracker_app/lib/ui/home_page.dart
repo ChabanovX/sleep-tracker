@@ -6,8 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:sleep_tracker_app/data/styles.dart';
 import 'package:sleep_tracker_app/models/schedule.dart';
 import "package:sleep_tracker_app/ui/graph.dart";
-import "package:sleep_tracker_app/ui/graph2.dart";
-import "package:sleep_tracker_app/ui/mygraph.dart";
 import "package:sleep_tracker_app/models/timer.dart";
 
 class HomePage extends StatefulWidget {

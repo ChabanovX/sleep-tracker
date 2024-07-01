@@ -10,9 +10,12 @@ class FullSchedule extends ChangeNotifier {
     for (int i = 0; i < 7; i++) {
       days.add(DaySchedule(day: Day.values[i]));
     }
+    // Test
+    days[0].setSchedule(Duration(hours: 20, minutes: 0, seconds: 0), Duration(hours: 6, minutes: 0, seconds: 0));
+
   }
-  bool isDayOff(Day day) {
-    return days[day.index].isDayOff;
+  bool isDayOff(int day) {
+    return days[day].isDayOff;
   }
 
   void changeTimeBeforeNotification(Duration time) {
@@ -31,12 +34,10 @@ class FullSchedule extends ChangeNotifier {
   }
 
   Duration get todaySleepDuration {
-    // Returns the start of a sleep phase.
-    // if (isDayOff(Day.values[DateTime.now().weekday - 1])) {
-    //   return Duration.zero;
-    // }
-    // return days[DateTime.now().weekday - 1].start;
-    return Duration(hours: 15, minutes: 0, seconds: 0);
+    if (isDayOff(DateTime.now().weekday - 1)) {
+      return Duration.zero;
+    }
+    return days[DateTime.now().weekday - 1].start;
   }
 }
 

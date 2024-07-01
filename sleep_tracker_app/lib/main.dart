@@ -10,6 +10,9 @@ import 'package:sleep_tracker_app/models/time_settings.dart';
 import 'package:sleep_tracker_app/ui/home_page.dart';
 import 'package:sleep_tracker_app/ui/settings_page.dart';
 
+import 'ui/providers/theme_notifier.dart';
+
+
 void main() async {
   // SystemChrome.setPreferredOrientations(
   //     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
@@ -21,20 +24,20 @@ void main() async {
   runApp(const ProviderScope(child: MainApp()));
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends ConsumerWidget {
   const MainApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = ref.watch(themeNotifierProvider);
+
     return MultiProvider(
       providers: [
         provider.ChangeNotifierProvider(create: (_) => FullSchedule()),
       ],
       child: CupertinoApp(
         debugShowCheckedModeBanner: false,
-        theme: const CupertinoThemeData(
-          brightness: Brightness.light,
-        ),
+        theme: theme,
         home: CupertinoTabScaffold(
           tabBar: CupertinoTabBar(
             items: const <BottomNavigationBarItem>[

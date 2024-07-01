@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:sleep_tracker_app/data/styles.dart';
 import 'package:sleep_tracker_app/models/schedule.dart';
 import "package:sleep_tracker_app/ui/graph.dart";
+import "package:sleep_tracker_app/ui/graph2.dart";
+import "package:sleep_tracker_app/ui/mygraph.dart";
 import "package:sleep_tracker_app/models/timer.dart";
 
 class HomePage extends StatefulWidget {
@@ -67,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                       alignment: Alignment.centerLeft,
                       padding: const EdgeInsets.only(left: 32.0),
                       child:
-                          const Text("Schedules", style: Styles.graySubtitle),
+                          const Text("Your Schedules", style: Styles.graySubtitle),
                     ),
                     const SizedBox(height: 16.0),
                     AspectRatio(
@@ -81,11 +83,13 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              const SizedBox(height: 32.0),
-              Container(
-                alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.only(left: 32.0),
-                // child: Text("LOL LOASDA", style: Styles.titleBold),
+              // const SizedBox(height: 32.0),
+              Expanded(
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Text("Something", style: Styles.subtitle),
+                  color: CupertinoColors.white,
+                ),
               ),
             ],
           ),

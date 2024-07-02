@@ -27,5 +27,10 @@ abstract class Styles {
     fontWeight: FontWeight.bold,
   );
 
+  static const TextStyle midtitleBold = TextStyle(
+    fontSize: 26,
+    fontWeight: FontWeight.bold,
+  );
+
   static const Color textColor = CupertinoColors.label;
 }

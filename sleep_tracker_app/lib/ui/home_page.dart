@@ -99,7 +99,7 @@ class _HomePage extends ConsumerState<HomePage> {
                               // padding: const EdgeInsets.fromLTRB(left: 32.0),
                               child: Center(
                                 child: const Text("Why sleep is important",
-                                    style: Styles.titleBold),
+                                    style: Styles.midtitleBold),
                               ),
                             ),
                             Container(

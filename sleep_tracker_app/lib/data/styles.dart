@@ -22,5 +22,10 @@ abstract class Styles {
     color: CupertinoColors.secondaryLabel,
   );
 
+  static const TextStyle subtitleBold = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+  );
+
   static const Color textColor = CupertinoColors.label;
 }

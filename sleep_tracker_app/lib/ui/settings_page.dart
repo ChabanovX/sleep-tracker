@@ -31,7 +31,6 @@ class _SettingsPage extends ConsumerState<SettingsPage> {
 
     return CupertinoPageScaffold(
       child: Container(
-
         child: ListView(
           children: [
             SizedBox(

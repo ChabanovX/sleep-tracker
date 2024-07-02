@@ -13,7 +13,7 @@ System of notifications. Hostage of your schedules in a local storage. CI/CD pip
 
 ## Example 
 
-![image](https://github.com/ChabanovX/sleep-tracker/assets/160529597/70f0a2d1-8e60-4a2f-a89b-161fa16f0287)
+![image](https://github.com/ChabanovX/sleep-tracker/assets/160529597/b0a3720e-c87d-4852-a64e-82eb0d298118)
 
 ![image](https://github.com/ChabanovX/sleep-tracker/assets/160529597/d5e1c669-91e4-421c-b7aa-4df35ce3e320)
 

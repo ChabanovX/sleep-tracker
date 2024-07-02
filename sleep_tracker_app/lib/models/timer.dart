@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:sleep_tracker_app/data/styles.dart';
 
 import 'dart:async';
@@ -55,7 +56,11 @@ class _CountdownState extends State<Countdown> {
     timer = Timer.periodic(
       Duration(seconds: 1),
       (_) => addTime(),
+
     );
+    setState(() {
+      
+    });
   }
 
   @override

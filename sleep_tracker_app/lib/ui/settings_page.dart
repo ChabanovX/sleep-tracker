@@ -8,11 +8,17 @@ import 'package:sleep_tracker_app/ui/providers/time_settings_provider.dart';
 
 import 'providers/theme_notifier.dart';
 
-class SettingsPage extends ConsumerWidget {
-  const SettingsPage({super.key});
+class SettingsPage extends ConsumerStatefulWidget {
+  const SettingsPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  _SettingsPage createState() => _SettingsPage();
+}
+
+class _SettingsPage extends ConsumerState<SettingsPage> {
+
+  @override
+  Widget build(BuildContext context) {
     final timeSettings = ref.watch(timeSettingsProvider) ??
         TimeSettings(
           bedTime: DateTime.now(),
@@ -30,7 +36,10 @@ class SettingsPage extends ConsumerWidget {
       ),
       child: ListView(
         children: [
-          const Text('Set Alarm', style: Styles.titleBold,),
+          const Text(
+            'Set Alarm',
+            style: Styles.titleBold,
+          ),
           Card(
             color: const Color.fromARGB(255, 238, 238, 238),
             child: Padding(
@@ -41,12 +50,10 @@ class SettingsPage extends ConsumerWidget {
                   const Icon(
                     Icons.bedtime_rounded,
                   ),
-                  const Text(
-                    'Set Bed Time:',
-                    style: Styles.subtitle
-                  ),
+                  const Text('Set Bed Time:', style: Styles.subtitle),
                   CupertinoButton(
-                    child: Text('${timeSettings.bedTime.hour.toString().padLeft(2, '0')}:${timeSettings.bedTime.minute.toString().padLeft(2, '0')}'),
+                    child: Text(
+                        '${timeSettings.bedTime.hour.toString().padLeft(2, '0')}:${timeSettings.bedTime.minute.toString().padLeft(2, '0')}'),
                     onPressed: () {
                       showCupertinoModalPopup(
                         context: context,
@@ -68,6 +75,7 @@ class SettingsPage extends ConsumerWidget {
                               CupertinoButton(
                                 child: const Text("Done"),
                                 onPressed: () {
+                                  
                                   Navigator.of(context).pop();
                                 },
                               ),
@@ -77,7 +85,6 @@ class SettingsPage extends ConsumerWidget {
                       );
                     },
                   ),
-              
                 ],
               ),
             ),
@@ -93,12 +100,10 @@ class SettingsPage extends ConsumerWidget {
                     Icons.notifications,
                     color: Colors.orange,
                   ),
-                  const Text(
-                    'Set Wake Up Time:',
-                    style: Styles.subtitle
-                  ),
+                  const Text('Set Wake Up Time:', style: Styles.subtitle),
                   CupertinoButton(
-                    child: Text('${timeSettings.wakeUpTime.hour.toString().padLeft(2, '0')}:${timeSettings.wakeUpTime.minute.toString().padLeft(2, '0')}'),
+                    child: Text(
+                        '${timeSettings.wakeUpTime.hour.toString().padLeft(2, '0')}:${timeSettings.wakeUpTime.minute.toString().padLeft(2, '0')}'),
                     onPressed: () {
                       showCupertinoModalPopup(
                         context: context,
@@ -113,7 +118,8 @@ class SettingsPage extends ConsumerWidget {
                                   initialDateTime: timeSettings.wakeUpTime,
                                   mode: CupertinoDatePickerMode.time,
                                   onDateTimeChanged: (DateTime newTime) {
-                                    timeSettingsNotifier.updateWakeUpTime(newTime);
+                                    timeSettingsNotifier
+                                        .updateWakeUpTime(newTime);
                                   },
                                 ),
                               ),
@@ -133,8 +139,13 @@ class SettingsPage extends ConsumerWidget {
               ),
             ),
           ),
-          const SizedBox(height: 50,),
-          const Text("Active Days:", style: Styles.titleBold,),
+          const SizedBox(
+            height: 50,
+          ),
+          const Text(
+            "Active Days:",
+            style: Styles.titleBold,
+          ),
           Wrap(
             spacing: 8.0,
             children: List<Widget>.generate(7, (int index) {
@@ -142,16 +153,21 @@ class SettingsPage extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CupertinoButton(
-                    color: timeSettings.activeDays[index] ? CupertinoColors.activeBlue : Colors.grey[200],
+                    color: timeSettings.activeDays[index]
+                        ? CupertinoColors.activeBlue
+                        : Colors.grey[200],
                     onPressed: () {
-                      final newActiveDays = List<bool>.from(timeSettings.activeDays);
+                      final newActiveDays =
+                          List<bool>.from(timeSettings.activeDays);
                       newActiveDays[index] = !newActiveDays[index];
                       timeSettingsNotifier.updateActiveDays(newActiveDays);
                     },
                     child: Text(
                       Day.values[index].name,
                       style: TextStyle(
-                        color: timeSettings.activeDays[index] ? CupertinoColors.white : CupertinoColors.systemBlue,
+                        color: timeSettings.activeDays[index]
+                            ? CupertinoColors.white
+                            : CupertinoColors.systemBlue,
                         fontSize: 15,
                       ),
                     ),

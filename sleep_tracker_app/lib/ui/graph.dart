@@ -1,27 +1,37 @@
 import 'package:fl_chart/fl_chart.dart';
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
+import 'package:sleep_tracker_app/models/time_settings.dart';
+import 'package:sleep_tracker_app/ui/providers/time_settings_provider.dart';
 
-class _BarChart extends StatefulWidget {
-  _BarChart();
+class _BarChart extends ConsumerStatefulWidget {
+  const _BarChart({Key? key}) : super(key: key);
 
   @override
-  State<_BarChart> createState() => _BarChartState();
+  ConsumerState<_BarChart> createState() => _BarChartState();
 }
 
-class _BarChartState extends State<_BarChart> {
-  late List<double> sleepData = [
-    8,
-    7,
-    6,
-    7,
-    8,
-    9,
-    8,
-  ];
+class _BarChartState extends ConsumerState<_BarChart> {
+  late List<double> sleepData = List.filled(7, 0.0);
 
   @override
   Widget build(BuildContext context) {
+    final timeSettings = ref.watch(timeSettingsProvider);
+
+    if (timeSettings != null) {
+      sleepData = List.generate(7, (index) {
+        if (timeSettings.activeDays[index]) {
+          final bedTime = timeSettings.bedTime;
+          final wakeUpTime = timeSettings.wakeUpTime;
+          final sleepDuration = wakeUpTime.difference(bedTime).inHours.toDouble();
+          return sleepDuration < 0 ? sleepDuration + 24 : sleepDuration; // Adjust for overnight sleep
+        } else {
+          return 0.0;
+        }
+      });
+    }
+
     return BarChart(
       BarChartData(
         barTouchData: barTouchData,
@@ -66,25 +76,25 @@ class _BarChartState extends State<_BarChart> {
     String text;
     switch (value.toInt()) {
       case 0:
-        text = 'Mn';
+        text = 'Mon';
         break;
       case 1:
-        text = 'Te';
+        text = 'Tue';
         break;
       case 2:
-        text = 'Wd';
+        text = 'Wed';
         break;
       case 3:
-        text = 'Tu';
+        text = 'Thu';
         break;
       case 4:
-        text = 'Fr';
+        text = 'Fri';
         break;
       case 5:
-        text = 'St';
+        text = 'Sat';
         break;
       case 6:
-        text = 'Sn';
+        text = 'Sun';
         break;
       default:
         text = '';
@@ -137,26 +147,26 @@ class _BarChartState extends State<_BarChart> {
             BarChartRodData(
               toY: value,
               gradient: _barsGradient,
-            )
+            ),
           ],
           showingTooltipIndicators: [0],
         );
       }).toList();
 }
 
-class BarChartSample3 extends StatefulWidget {
-  const BarChartSample3({super.key});
+class BarChartSample3 extends ConsumerStatefulWidget {
+  const BarChartSample3({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => BarChartSample3State();
+  ConsumerState<BarChartSample3> createState() => BarChartSample3State();
 }
 
-class BarChartSample3State extends State<BarChartSample3> {
+class BarChartSample3State extends ConsumerState<BarChartSample3> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 1.6,
-      child: _BarChart(),
+      child: const _BarChart(),
     );
   }
 }

@@ -14,7 +14,11 @@ void main() async {
   Hive.registerAdapter(TimeSettingsAdapter());
   await Hive.openBox<TimeSettings>('timeSettings');
 
-  runApp(const ProviderScope(child: MainApp()));
+  runApp(
+    const ProviderScope(
+      child: MainApp(),
+    ),
+  );
 }
 
 class MainApp extends ConsumerStatefulWidget {
@@ -25,7 +29,6 @@ class MainApp extends ConsumerStatefulWidget {
 }
 
 class _MainApp extends ConsumerState<MainApp> {
-
   @override
   Widget build(BuildContext context) {
     final theme = ref.watch(themeNotifierProvider);

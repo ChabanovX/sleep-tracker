@@ -7,10 +7,8 @@ $ flutter pub get
 
 $ flutter run 
 
-## List of features
-
-System of notifications. Hostage of your schedules in a local storage. CI/CD pipelines. light and dark themes supportance
-
 ## Preview
+
+Push notifications. Local storage. User's theme support
 
 ![Preview](preview.png)
